@@ -1,21 +1,24 @@
 import 'reflect-metadata'
-import express, { Express } from 'express'
+import 'express-async-errors'
+import express, { Express, Request, Response, NextFunction } from 'express'
 import cors from 'cors'
 import { userRouter, authenticationRouter } from '@/routes'
-
 import { loadEnv, disconnectDB } from '@/config'
 import { handleApplicationErrors } from '@/middlewares'
 
 loadEnv()
 
-const app = express()
-app
-  .use(cors())
-  .use(express.json())
-  .get('/health', (_req, res) => res.send('OK!'))
-  .use('/users', userRouter)
-  .use('/auth', authenticationRouter)
-  .use(handleApplicationErrors)
+const app: Express = express()
+
+app.use(cors())
+app.use(express.json())
+
+app.get('/health', (_req: Request, res: Response) => res.send('OK!'))
+
+app.use('/users', userRouter)
+app.use('/auth', authenticationRouter)
+
+app.use(handleApplicationErrors)
 
 export function init(): Promise<Express> {
   return Promise.resolve(app)
