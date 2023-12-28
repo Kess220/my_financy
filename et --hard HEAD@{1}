@@ -1,0 +1,42 @@
+[33mdf5b6c6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: reset: moving to df5b6c675bdb035530a01a616c62c9cdd7918944
+[33m77e27ef[m HEAD@{1}: reset: moving to HEAD
+[33m77e27ef[m HEAD@{2}: rebase (abort): returning to refs/heads/main
+[33m4faafc7[m HEAD@{3}: rebase (continue): config environment
+[33mbac146d[m HEAD@{4}: rebase (start): checkout bac146d19b8b7f98c9ccb464ac975451a0929c6a
+[33m77e27ef[m HEAD@{5}: rebase (abort): returning to refs/heads/main
+[33m4b6b6c1[m HEAD@{6}: rebase (start): checkout 4b6b6c17a0c6a2ca53fe1a9c18d8dda3e9907586
+[33m77e27ef[m HEAD@{7}: rebase (finish): returning to refs/heads/main
+[33m77e27ef[m HEAD@{8}: rebase: fast-forward
+[33m9b22624[m HEAD@{9}: rebase: fast-forward
+[33m7f82935[m HEAD@{10}: rebase: fast-forward
+[33m7321303[m HEAD@{11}: rebase: fast-forward
+[33m62441f5[m HEAD@{12}: rebase: fast-forward
+[33mce4129f[m HEAD@{13}: rebase: fast-forward
+[33m4c08001[m HEAD@{14}: rebase: fast-forward
+[33mc6cf497[m HEAD@{15}: rebase: fast-forward
+[33mdf5b6c6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{16}: rebase: fast-forward
+[33ma7da6fb[m HEAD@{17}: rebase (start): checkout a7da6fb57bd1d869897cf73bf4ab2baf4daadd65
+[33m77e27ef[m HEAD@{18}: rebase (finish): returning to refs/heads/main
+[33m77e27ef[m HEAD@{19}: rebase: fast-forward
+[33m9b22624[m HEAD@{20}: rebase: fast-forward
+[33m7f82935[m HEAD@{21}: rebase: fast-forward
+[33m7321303[m HEAD@{22}: rebase: fast-forward
+[33m62441f5[m HEAD@{23}: rebase: fast-forward
+[33mce4129f[m HEAD@{24}: rebase: fast-forward
+[33m4c08001[m HEAD@{25}: rebase: fast-forward
+[33mc6cf497[m HEAD@{26}: rebase: fast-forward
+[33mdf5b6c6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{27}: rebase: fast-forward
+[33m8659340[m HEAD@{28}: rebase (start): checkout 865934027bac53cd557ec735a085b2cec0c2f83e
+[33m77e27ef[m HEAD@{29}: rebase (abort): returning to refs/heads/main
+[33m77e27ef[m HEAD@{30}: rebase (abort): returning to refs/heads/main
+[33m77e27ef[m HEAD@{31}: revert: Revert "config environment"
+[33m9b22624[m HEAD@{32}: reset: moving to HEAD@{1}
+[33mdf5b6c6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{33}: reset: moving to df5b6c675bdb035530a01a616c62c9cdd7918944
+[33m9b22624[m HEAD@{34}: commit: config environment
+[33m7f82935[m HEAD@{35}: commit: modeling the Transactional and wallet database, creating a wallet and searching for wallet information according to the user
+[33m7321303[m HEAD@{36}: commit: user registration and login and error handling
+[33m62441f5[m HEAD@{37}: commit: user registration and login and error handling
+[33mce4129f[m HEAD@{38}: commit: config environment
+[33m4c08001[m HEAD@{39}: commit: config environment
+[33mc6cf497[m HEAD@{40}: commit: config environment
+[33mdf5b6c6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{41}: commit (initial): config environment
