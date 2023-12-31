@@ -48,7 +48,7 @@ export function handleApplicationErrors(
   if (err.name === 'ForbiddenError') {
     return res.status(httpStatus.FORBIDDEN).send(err.message)
   }
-  if (err.name === 'NotFoundBookingError') {
+  if (err.name === 'UserNotFoundError') {
     return res.status(httpStatus.NOT_FOUND).send(err.message)
   }
 

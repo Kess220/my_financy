@@ -9,7 +9,7 @@ interface CreateUserParams {
   password: string
 }
 
-export async function createUserService({
+async function createUserService({
   name,
   email,
   password,

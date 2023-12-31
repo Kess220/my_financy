@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { userRepository, authenticationRepository } from '@/repositories'
 import { exclude } from '@/utils/prisma-utils'
+import { invalidCredentialsError, userNotFoundError } from '@/errors'
 
 async function signIn(params: SignInParams): Promise<SignInResult> {
   const { email, password } = params
@@ -27,7 +28,7 @@ async function getUserOrFail(email: string): Promise<GetUserOrFailResult> {
   })
 
   if (!user) {
-    throw new Error('Usuário não encontrado')
+    throw userNotFoundError()
   }
 
   return user
@@ -51,7 +52,7 @@ async function validatePasswordOrFail(
   const isPasswordValid = await bcrypt.compare(password, userPassword)
 
   if (!isPasswordValid) {
-    throw new Error('Senha inválida')
+    throw invalidCredentialsError()
   }
 }
 

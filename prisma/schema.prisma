@@ -23,3 +23,21 @@ model Session {
    userId    Int
   createdAt DateTime @default(now())
 }
+
+model Wallet {
+  id       Int      @id @default(autoincrement())
+  userId   Int
+  balance  Float    @default(0)
+  transactions Transaction[]
+}
+
+model Transaction {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  value       Float
+  type        String    
+  date        DateTime  @default(now())
+  walletId    Int
+  description String?   
+  wallet      Wallet    @relation(fields: [walletId], references: [id])
+}

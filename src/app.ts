@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import 'express-async-errors'
-import express, { Express, Request, Response, NextFunction } from 'express'
+import express, { Express, Request, Response } from 'express'
 import cors from 'cors'
-import { userRouter, authenticationRouter } from '@/routes'
+import { userRouter, authenticationRouter, walletRouter } from '@/routes'
 import { loadEnv, disconnectDB } from '@/config'
 import { handleApplicationErrors } from '@/middlewares'
 
@@ -17,6 +17,7 @@ app.get('/health', (_req: Request, res: Response) => res.send('OK!'))
 
 app.use('/users', userRouter)
 app.use('/auth', authenticationRouter)
+app.use('/wallet', walletRouter)
 
 app.use(handleApplicationErrors)
 
