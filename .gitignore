@@ -6,3 +6,5 @@ yarn.lock
 .vscode
 coverage
 coverage/
+.env.development
+.env.test
