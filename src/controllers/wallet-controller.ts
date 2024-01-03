@@ -18,3 +18,16 @@ export const getWalletById = async (
   const infoWallet = await walletService.getWalletByUserId(req)
   res.status(httpStatus.OK).json(infoWallet)
 }
+
+export const updateWalletBalance = async (
+  req: AuthenticatedRequest,
+  res: Response,
+): Promise<void> => {
+  const { newBalance } = req.body
+
+  const updateBalanceWallet = await walletService.updateWalletBalance(
+    req,
+    newBalance,
+  )
+  res.status(httpStatus.OK).json(updateBalanceWallet)
+}

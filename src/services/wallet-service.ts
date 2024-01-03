@@ -1,6 +1,10 @@
 import { Wallet } from '@prisma/client'
 import { walletRepository } from '@/repositories/index'
-import { invalidInputError, notFoundError } from '@/errors'
+import {
+  UserAlreadyHasWalletError,
+  invalidInputError,
+  notFoundError,
+} from '@/errors'
 import { AuthenticatedRequest } from '@/middlewares'
 
 async function createWallet(req: AuthenticatedRequest): Promise<Wallet> {
@@ -8,6 +12,11 @@ async function createWallet(req: AuthenticatedRequest): Promise<Wallet> {
 
   if (!userId) {
     throw invalidInputError('User ID not provided in the request context.')
+  }
+
+  const existingWallet = await walletRepository.getWalletByUserId(userId)
+  if (existingWallet) {
+    throw UserAlreadyHasWalletError()
   }
 
   return walletRepository.createWallet(userId)
@@ -26,14 +35,24 @@ async function getWalletByUserId(
 }
 
 async function updateWalletBalance(
-  walletId: number,
+  req: AuthenticatedRequest,
   newBalance: number,
 ): Promise<Wallet | null> {
-  const wallet = await walletRepository.updateWalletBalance(
-    walletId,
-    newBalance,
-  )
+  const userId = req.userId
+
+  if (!userId) {
+    throw invalidInputError('User ID not provided in the request context.')
+  }
+
+  if (typeof newBalance !== 'number' || isNaN(newBalance)) {
+    throw invalidInputError(
+      'Invalid newBalance. Please provide a valid number.',
+    )
+  }
+
+  const wallet = await walletRepository.updateWalletBalance(userId, newBalance)
   validateWalletExistence(wallet)
+
   return wallet
 }
 

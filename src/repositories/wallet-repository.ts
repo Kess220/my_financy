@@ -29,23 +29,25 @@ async function getWalletByUserId(userId: number): Promise<Wallet | null> {
     },
   })
 
-  return wallet || null
+  return wallet ?? null
 }
 
 async function updateWalletBalance(
-  walletId: number,
+  userId: number,
   newBalance: number,
 ): Promise<Wallet | null> {
-  return prisma.$transaction(async (tx) => {
+  const wallet = await prisma.$transaction(async (tx) => {
     return tx.wallet.update({
       where: {
-        id: walletId,
+        userId: userId,
       },
       data: {
         balance: newBalance,
       },
     })
   })
+
+  return wallet
 }
 
 export const walletRepository: WalletRepository = {
