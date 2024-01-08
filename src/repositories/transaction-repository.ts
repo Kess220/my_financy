@@ -1,5 +1,4 @@
-// transactionRepository.ts
-import { PrismaClient, Transaction, Wallet } from '@prisma/client'
+import { PrismaClient, Transaction } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -10,8 +9,7 @@ interface TransactionRepository {
     transactionType: 'deposit' | 'withdrawal',
     description?: string,
   ): Promise<Transaction>
-  getTransactionsByUserId(userId: number): Promise<Transaction[]>
-  getWalletByUserId(userId: number): Promise<Wallet | null>
+  getAllTransactionsByUserId(userId: number): Promise<Transaction[]>
 }
 
 async function createTransaction(
@@ -32,7 +30,6 @@ async function createTransaction(
       },
     })
 
-    // Cria a transação
     return tx.transaction.create({
       data: {
         walletId,
@@ -45,24 +42,17 @@ async function createTransaction(
   })
 }
 
-async function getTransactionsByUserId(userId: number): Promise<Transaction[]> {
+async function getAllTransactionsByUserId(
+  userId: number,
+): Promise<Transaction[]> {
   return prisma.transaction.findMany({
-    where: {
-      userId,
-    },
-  })
-}
-
-async function getWalletByUserId(userId: number): Promise<Wallet | null> {
-  return prisma.wallet.findFirst({
-    where: {
-      userId,
+    orderBy: {
+      date: 'asc',
     },
   })
 }
 
 export const transactionRepository: TransactionRepository = {
   createTransaction,
-  getTransactionsByUserId,
-  getWalletByUserId,
+  getAllTransactionsByUserId,
 }

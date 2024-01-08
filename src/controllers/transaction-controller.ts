@@ -16,3 +16,11 @@ export const createTransaction = async (
   )
   res.status(httpStatus.CREATED).json(newTransaction)
 }
+export const getAllTransactions = async (
+  req: AuthenticatedRequest,
+  res: Response,
+): Promise<void> => {
+  const historicTransactions =
+    await transactionService.getAllTransactionsByUserId(req)
+  res.status(httpStatus.OK).json(historicTransactions)
+}
