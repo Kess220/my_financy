@@ -3,15 +3,14 @@
     "target": "es2020",
     "module": "commonjs",
     "outDir": "dist",
-    "strictNullChecks": true,
     "noImplicitAny": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "rootDirs": ["src", "tests"],
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*", "dist/*"]
     },
     "plugins": [
       {

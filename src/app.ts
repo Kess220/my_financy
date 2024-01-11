@@ -1,3 +1,4 @@
+import { disconnectDB, connectDb, loadEnv } from '@/config'
 import 'reflect-metadata'
 import 'express-async-errors'
 import express, { Express, Request, Response } from 'express'
@@ -8,7 +9,6 @@ import {
   walletRouter,
   transactionRouter,
 } from '@/routes'
-import { loadEnv, disconnectDB } from '@/config'
 import { handleApplicationErrors } from '@/middlewares'
 
 loadEnv()
@@ -28,6 +28,7 @@ app.use('/transaction', transactionRouter)
 app.use(handleApplicationErrors)
 
 export function init(): Promise<Express> {
+  connectDb()
   return Promise.resolve(app)
 }
 
